@@ -21,19 +21,15 @@
           [0,0,1,1,1,1,1,1,1,1,0],
           [0,0,1,1,1,1,1,1,1,1,0],
           [0,0,1,1,1,1,1,1,1,1,0],
-          [0,0,1,1,1,1,1,1,1,1,0]]
-     3:  [[                     ],
-          [                     ],
-          
-      
-  };
-
+          [0,0,1,1,1,1,1,1,1,1,0]] };
 
   var spriteData = {
-    'alien1': { sx: 0,  sy: 0,  w: 23, h: 18, cls: Alien, frames: 2 },
-    'alien2': { sx: 0,  sy: 18, w: 23, h: 18, cls: Alien, frames: 2 },
-    'player': { sx: 0,  sy: 36, w: 26, h: 17, cls: Player },
-    'missile': { sx: 0,  sy: 86, w: 3,  h: 14, cls: Missile }
+    'alien1': { sx: 0,  sy: 0,  w: 54, h: 54, cls: Alien, frames: 1 },
+    'alien2': { sx: 57,  sy: 0, w: 64, h: 64, cls: Alien, frames: 1 },
+    'alien3': { sx: 134,  sy: 0, w: 82, h: 70, cls: Alien, frames: 1 },
+    'player': { sx: 216,  sy: 0, w: 57, h: 57, cls: Player },  
+    'missile': { sx: 113,  sy: 19, w: 20,  h: 36, cls: Missile }
+    'explosion': { sx: 0, sy: 73, w: 46, h: 53, frames: 14 },
   }
 
   function startGame() {
@@ -71,6 +67,4 @@
                                         "win"  : winGame });
                    });
    });
-
-
 
