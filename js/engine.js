@@ -1,3 +1,4 @@
+
 var Game = new function() {                                                                  
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
   this.keys = {};
@@ -7,6 +8,16 @@ var Game = new function() {
     this.canvas = this.canvas_elem.getContext('2d');
     this.width = $(this.canvas_elem).attr('width');
     this.height= $(this.canvas_elem).attr('height');
+
+      //  new Initialize the background object
+
+this.backgroundAudio = new Audio("sounds/kick_shock.wav");
+this.backgroundAudio.loop = true;
+this.backgroundAudio.volume = .25;
+this.backgroundAudio.load();
+      
+    // changes end  (to initializing background audio)
+
 
     $(window).keydown(function(event) {
       if(KEY_CODES[event.keyCode]) Game.keys[KEY_CODES[event.keyCode]] = true;
@@ -24,9 +35,9 @@ var Game = new function() {
   this.loadBoard = function(board) { Game.board = board; };
 
   this.loop = function() { 
-    Game.board.step(30/1000); 
+    Game.board.step(50/1000); 
     Game.board.render(Game.canvas);
-    setTimeout(Game.loop,30);
+    setTimeout(Game.loop,10);
   };
 };
 
@@ -63,8 +74,8 @@ var GameScreen = function GameScreen(text,text2,callback) {
     canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
   };
 };
-
 var GameBoard = function GameBoard(level_number) {
+  this.score= 0;
   this.removed_objs = [];
   this.missiles = 0;
   this.level = level_number;
@@ -111,7 +122,11 @@ var GameBoard = function GameBoard(level_number) {
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     this.iterate(function() { this.draw(canvas); });
-  };
+      
+    var scoretext = "score: " + this.score;
+    canvas.font="20px arial";
+    canvas.fillText(scoretext,10,50);
+};
 
   this.collision = function(o1,o2) {
     return !((o1.y+o1.h-1<o2.y) || (o1.y>o2.y+o2.h-1) ||

@@ -1,5 +1,3 @@
-
-
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
@@ -59,12 +57,15 @@ Alien.prototype.die = function() {
   GameAudio.play('die');
   this.flock.speed += 1;
   this.board.remove(this);
+    this.board.score++;
+
+
 }
 
 Alien.prototype.step = function(dt) {
   this.mx += dt * this.flock.dx;
   this.y += this.flock.dy;
-  if(Math.abs(this.mx) > 10) {
+  if(Math.abs(this.mx) > 5) {
     if(this.y == this.flock.max_y[this.x]) {
       this.fireSometimes();
     }
@@ -78,7 +79,7 @@ Alien.prototype.step = function(dt) {
 }
 
 Alien.prototype.fireSometimes = function() {
-      if(Math.random()*100 < 10) {
+      if(Math.random()*100 < 5) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
@@ -107,8 +108,10 @@ Player.prototype.step = function(dt) {
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
 
   this.reloading--;
-
-  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
+    
+// increased the bullet limitation < 10  
+    
+  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 10) {
     GameAudio.play('fire');
     this.board.addSprite('missile',
                           this.x + this.w/2 - Sprites.map.missile.w/2,
@@ -146,3 +149,5 @@ Missile.prototype.die = function() {
   if(this.board.missiles < 0) this.board.missiles=0;
    this.board.remove(this);
 }
+
+ 
