@@ -2,7 +2,7 @@ var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
   this.hit = 1; this.lastHit = 0;
-  this.speed = 10;
+  this.speed = 7;
 
   this.draw = function() {};
 
@@ -55,7 +55,7 @@ Alien.prototype.draw = function(canvas) {
 
 Alien.prototype.die = function() {
   GameAudio.play('die');
-  this.flock.speed += 1;
+  this.flock.speed += 0;
   this.board.remove(this);
     this.board.score++;
 
