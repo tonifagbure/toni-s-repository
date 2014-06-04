@@ -84,6 +84,7 @@ var levelData = {
                                  });
     Game.loadBoard(screen);
   }
+// upgraded laser audio 
 
   $(function() {
     GameAudio.load({ 'fire' : 'media/laser2.ogg', 'die' : 'media/explosion.ogg'}, 

@@ -1,3 +1,5 @@
+// change the value for the speed of the alein flock after a hit 
+
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
   this.dx = 10; this.dy = 0;
@@ -42,7 +44,6 @@ var AlienFlock = function AlienFlock() {
 }
 
 
-
 var Alien = function Alien(opts) {
   this.flock = opts['flock'];
   this.frame = 0;
@@ -55,7 +56,7 @@ Alien.prototype.draw = function(canvas) {
 
 Alien.prototype.die = function() {
   GameAudio.play('die');
-  this.flock.speed += 0;
+  this.flock.speed += 1;
   this.board.remove(this);
     this.board.score++;
 

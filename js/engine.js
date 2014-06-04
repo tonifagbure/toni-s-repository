@@ -63,6 +63,8 @@ var GameScreen = function GameScreen(text,text2,callback) {
     if(Game.keys['fire'] && callback) callback();
   };
 
+  // changed the canvas font colour and style
+    
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "bold 30px PressStart2P";
